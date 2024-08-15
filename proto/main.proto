@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package balancer;
+
+option go_package = "/Users/erik/Desktop/GOGOGO/wink;wink";
+
+service Balancer {
+  rpc Redirect(RedirectRequest) returns (RedirectResponse);
+}
+
+message RedirectRequest {
+  string video = 1;
+}
+
+message RedirectResponse {
+  string url = 1;
+}
