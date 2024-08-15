@@ -16,5 +16,5 @@
 1. **Склонируйте репозиторий:**
 
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git https://github.com/diimmortals/winkTest
+   
