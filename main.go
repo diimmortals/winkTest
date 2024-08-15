@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"google.golang.org/grpc/reflection"
 	"log"
 	"net"
 	"os"
 	"sync/atomic"
-
 	pb "wink/proto"
 
 	"google.golang.org/grpc"
@@ -56,7 +56,7 @@ func main() {
 	config := LoadConfig()
 
 	// Создаем gRPC сервер
-	lis, err := net.Listen("tcp", ":443")
+	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
@@ -65,7 +65,9 @@ func main() {
 	// Регистрируем наш сервис
 	pb.RegisterBalancerServer(grpcServer, &server{config: config})
 
-	log.Println("Starting gRPC server on port 443...")
+	reflection.Register(grpcServer)
+
+	log.Println("Starting gRPC server on port 50051...")
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

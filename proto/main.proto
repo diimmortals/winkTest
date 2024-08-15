@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package balancer;
 
-option go_package = "/Users/erik/Desktop/GOGOGO/wink;wink";
+option go_package = "wink/proto;proto";
 
 service Balancer {
   rpc Redirect(RedirectRequest) returns (RedirectResponse);
